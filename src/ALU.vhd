@@ -50,6 +50,8 @@ architecture Behavioral of ALU is
     signal result: std_logic_vector (7 downto 0);
     signal a_result: std_logic_vector (8 downto 0);
     signal s_result: std_logic_vector (8 downto 0);
+    signal as_result: std_logic_vector (8 downto 0);
+    signal ss_result: std_logic_vector (8 downto 0);
     
     signal Z : std_logic_vector (3 downto 0);
     signal N : std_logic_vector (3 downto 0);
@@ -81,21 +83,19 @@ begin
          "0000";
          
     a_result <= std_logic_vector(u_A + u_B);  
-    s_result <= std_logic_vector(u_A - u_B);       
-    
+    s_result <= std_logic_vector(u_A - u_B);          
     C_out <= '1' when (a_result(8) = '1') or (s_result(8) = '1') else
              '0';
-         
+      
     C <= "0010" when ((i_op = "000" or i_op = "001") and (C_out = '1')) else
          "0000";    
+     
+    as_result <= std_logic_vector(s_A + s_B);  
+    
+    V <= "0001" when ((s_A(7) = '0' and s_B(7) = '0') and (as_result(8) = '1')) or 
+                     ((s_A(7) = '1' and s_B(7) = '1') and (as_result(8) = '1')) else
+                     "0000";
          
-    
-    
-    
-    
-    o_flags <= (Z + N);
-    
-    
-               
-              
+    o_flags <= (Z or N or C or V);
+                  
 end Behavioral;
