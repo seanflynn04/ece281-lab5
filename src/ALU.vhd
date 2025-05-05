@@ -1,4 +1,4 @@
-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 -- Company: 
 -- Engineer: 
 -- 
@@ -50,8 +50,8 @@ architecture Behavioral of ALU is
     signal result: std_logic_vector (7 downto 0);
     signal a_result: std_logic_vector (8 downto 0);
     signal s_result: std_logic_vector (8 downto 0);
-    signal as_result: std_logic_vector (8 downto 0);
-    signal ss_result: std_logic_vector (8 downto 0);
+    signal as_result: std_logic_vector (7 downto 0);
+    signal as2_result: std_logic_vector (7 downto 0);
     
     signal Z : std_logic_vector (3 downto 0);
     signal N : std_logic_vector (3 downto 0);
@@ -91,11 +91,14 @@ begin
          "0000";    
      
     as_result <= std_logic_vector(s_A + s_B);  
-    
-    V <= "0001" when ((s_A(7) = '0' and s_B(7) = '0') and (as_result(8) = '1')) or 
-                     ((s_A(7) = '1' and s_B(7) = '1') and (as_result(8) = '1')) else
+    as2_result <= std_logic_vector(s_A + (-s_B));
+    V <= "0001" when ((s_A(7) = '0' and s_B(7) = '0' and as_result(7) = '1') or 
+                     (s_A(7) = '1' and s_B(7) = '1' and as_result(7) = '0') or
+                     (s_A(7) = '1' and s_B(7) = '0' and as2_result(7) = '0') or
+                     (s_A(7) = '0' and s_B(7) = '1' and as2_result(7) = '1')) else
                      "0000";
+                     
          
-    o_flags <= (Z or N or C or V);
+    o_flags <= (N or Z or C or V);
                   
 end Behavioral;
