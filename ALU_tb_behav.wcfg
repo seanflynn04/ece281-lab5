@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="ALU_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="ALU_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="75.001 ns"></ZoomEndTime>
+      <Cursor1Time time="38.561 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="166"></NameColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="54" />
+   <wvobject fp_name="/ALU_tb/w_A" type="array">
+      <obj_property name="ElementShortName">w_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">w_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/w_B" type="array">
+      <obj_property name="ElementShortName">w_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">w_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/w_result" type="array">
+      <obj_property name="ElementShortName">w_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">w_result[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/w_op" type="array">
+      <obj_property name="ElementShortName">w_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">w_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/w_flags" type="array">
+      <obj_property name="ElementShortName">w_flags[3:0]</obj_property>
+      <obj_property name="ObjectShortName">w_flags[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/OP_ADD" type="array">
+      <obj_property name="ElementShortName">OP_ADD[2:0]</obj_property>
+      <obj_property name="ObjectShortName">OP_ADD[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/OP_SUB" type="array">
+      <obj_property name="ElementShortName">OP_SUB[2:0]</obj_property>
+      <obj_property name="ObjectShortName">OP_SUB[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/OP_AND" type="array">
+      <obj_property name="ElementShortName">OP_AND[2:0]</obj_property>
+      <obj_property name="ObjectShortName">OP_AND[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/OP_OR" type="array">
+      <obj_property name="ElementShortName">OP_OR[2:0]</obj_property>
+      <obj_property name="ObjectShortName">OP_OR[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/k_step" type="other">
+      <obj_property name="ElementShortName">k_step</obj_property>
+      <obj_property name="ObjectShortName">k_step</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_A" type="array">
+      <obj_property name="ElementShortName">i_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_B" type="array">
+      <obj_property name="ElementShortName">i_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_op" type="array">
+      <obj_property name="ElementShortName">i_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/o_result" type="array">
+      <obj_property name="ElementShortName">o_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/o_flags" type="array">
+      <obj_property name="ElementShortName">o_flags[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_flags[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/C_out" type="logic">
+      <obj_property name="ElementShortName">C_out</obj_property>
+      <obj_property name="ObjectShortName">C_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_A" type="array">
+      <obj_property name="ElementShortName">s_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_B" type="array">
+      <obj_property name="ElementShortName">s_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/u_A" type="array">
+      <obj_property name="ElementShortName">u_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">u_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/u_B" type="array">
+      <obj_property name="ElementShortName">u_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">u_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/result" type="array">
+      <obj_property name="ElementShortName">result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/B_out" type="array">
+      <obj_property name="ElementShortName">B_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/a_result" type="array">
+      <obj_property name="ElementShortName">a_result[8:0]</obj_property>
+      <obj_property name="ObjectShortName">a_result[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_result" type="array">
+      <obj_property name="ElementShortName">s_result[8:0]</obj_property>
+      <obj_property name="ObjectShortName">s_result[8:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/as_result" type="array">
+      <obj_property name="ElementShortName">as_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">as_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/as2_result" type="array">
+      <obj_property name="ElementShortName">as2_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">as2_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/Z" type="array">
+      <obj_property name="ElementShortName">Z[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Z[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/N" type="array">
+      <obj_property name="ElementShortName">N[3:0]</obj_property>
+      <obj_property name="ObjectShortName">N[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/C" type="array">
+      <obj_property name="ElementShortName">C[3:0]</obj_property>
+      <obj_property name="ObjectShortName">C[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/V" type="array">
+      <obj_property name="ElementShortName">V[3:0]</obj_property>
+      <obj_property name="ObjectShortName">V[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_A" type="array">
+      <obj_property name="ElementShortName">i_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_B" type="array">
+      <obj_property name="ElementShortName">i_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/i_op" type="array">
+      <obj_property name="ElementShortName">i_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/o_result" type="array">
+      <obj_property name="ElementShortName">o_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/o_flags" type="array">
+      <obj_property name="ElementShortName">o_flags[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_flags[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_A" type="array">
+      <obj_property name="ElementShortName">s_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_B" type="array">
+      <obj_property name="ElementShortName">s_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/u_A" type="array">
+      <obj_property name="ElementShortName">u_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">u_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/u_B" type="array">
+      <obj_property name="ElementShortName">u_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">u_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_A_9" type="array">
+      <obj_property name="ElementShortName">s_A_9[8:0]</obj_property>
+      <obj_property name="ObjectShortName">s_A_9[8:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_B_9" type="array">
+      <obj_property name="ElementShortName">s_B_9[8:0]</obj_property>
+      <obj_property name="ObjectShortName">s_B_9[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s2_A" type="array">
+      <obj_property name="ElementShortName">s2_A[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_A[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s2_B" type="array">
+      <obj_property name="ElementShortName">s2_B[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_B[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/C_out" type="logic">
+      <obj_property name="ElementShortName">C_out</obj_property>
+      <obj_property name="ObjectShortName">C_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/result" type="array">
+      <obj_property name="ElementShortName">result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/B_out" type="array">
+      <obj_property name="ElementShortName">B_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">B_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/a_result" type="array">
+      <obj_property name="ElementShortName">a_result[8:0]</obj_property>
+      <obj_property name="ObjectShortName">a_result[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/s_result" type="array">
+      <obj_property name="ElementShortName">s_result[8:0]</obj_property>
+      <obj_property name="ObjectShortName">s_result[8:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/as_result" type="array">
+      <obj_property name="ElementShortName">as_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">as_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/as2_result" type="array">
+      <obj_property name="ElementShortName">as2_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">as2_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/Z" type="array">
+      <obj_property name="ElementShortName">Z[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Z[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/N" type="array">
+      <obj_property name="ElementShortName">N[3:0]</obj_property>
+      <obj_property name="ObjectShortName">N[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/C" type="array">
+      <obj_property name="ElementShortName">C[3:0]</obj_property>
+      <obj_property name="ObjectShortName">C[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/ALU_tb/uut/V" type="array">
+      <obj_property name="ElementShortName">V[3:0]</obj_property>
+      <obj_property name="ObjectShortName">V[3:0]</obj_property>
+   </wvobject>
+</wave_config>

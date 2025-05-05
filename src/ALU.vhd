@@ -46,10 +46,19 @@ architecture Behavioral of ALU is
     signal u_A : unsigned (7 downto 0);
     signal u_B : unsigned (7 downto 0);
     
+    signal s_A_9 : signed (8 downto 0);
+    signal s_B_9 : signed (8 downto 0);
+    
+    signal s2_A : std_logic_vector (7 downto 0);
+    signal s2_B : std_logic_vector (7 downto 0);
+    
     signal C_out : std_logic;
     signal result: std_logic_vector (7 downto 0);
+    signal B_out : std_logic_vector (7 downto 0);
+    
     signal a_result: std_logic_vector (8 downto 0);
     signal s_result: std_logic_vector (8 downto 0);
+    
     signal as_result: std_logic_vector (7 downto 0);
     signal as2_result: std_logic_vector (7 downto 0);
     
@@ -63,10 +72,18 @@ begin
 
     s_A <= signed(i_A);
     s_B <= signed(i_B);
+   
+   s_A_9(8) <= i_A(7); -- sign extension
+   s_A_9 (7 downto 0) <= signed(i_A);
+   
+   s_B_9(8) <= i_B(7); -- sign extension
+   s_B_9 (7 downto 0) <= signed(i_B);
+   
     u_A <= unsigned(i_A);
     u_B <= unsigned(i_B);
+    
 
-    result <=  std_logic_vector(s_A + s_B) when (i_op = "000") else
+    result <=   std_logic_vector(s_A + s_B) when (i_op = "000") else
     
                  std_logic_vector(s_A - s_B) when (i_op = "001") else
              
@@ -82,20 +99,24 @@ begin
     N <= "1000" when (result(7) = '1') else
          "0000";
          
-    a_result <= std_logic_vector(u_A + u_B);  
-    s_result <= std_logic_vector(u_A - u_B);          
-    C_out <= '1' when (a_result(8) = '1') or (s_result(8) = '1') else
-             '0';
-      
-    C <= "0010" when ((i_op = "000" or i_op = "001") and (C_out = '1')) else
-         "0000";    
+   a_result <= std_logic_vector(s_A_9 + s_B_9);  
+   s_result <= std_logic_vector(s_A_9 - s_B_9);          
+   C_out <= '1' when (i_op = "000" and a_result(8) = '1') or (i_op = "001" and s_result(8) = '1') else
+            '0';
+    
+   -- B_out <= i_B when i_op(0) = '0' else
+   --          not(i_B);
+   -- C_out <= (i_A and i_B) or (i_A and i_op(0)) or (i_B and i_op(0));
+     
+   C <= "0010" when ((i_op = "000" or i_op = "001") and (C_out = '1')) else
+        "0000";    
      
     as_result <= std_logic_vector(s_A + s_B);  
     as2_result <= std_logic_vector(s_A + (-s_B));
-    V <= "0001" when ((s_A(7) = '0' and s_B(7) = '0' and as_result(7) = '1') or 
-                     (s_A(7) = '1' and s_B(7) = '1' and as_result(7) = '0') or
-                     (s_A(7) = '1' and s_B(7) = '0' and as2_result(7) = '0') or
-                     (s_A(7) = '0' and s_B(7) = '1' and as2_result(7) = '1')) else
+    V <= "0001" when ((i_op = "000" and s_A(7) = '0' and s_B(7) = '0' and as_result(7) = '1') or 
+                     (i_op = "000" and s_A(7) = '1' and s_B(7) = '1' and as_result(7) = '0') or
+                     (i_op = "001" and s_A(7) = '1' and s_B(7) = '0' and as2_result(7) = '0') or
+                     (i_op = "001" and s_A(7) = '0' and s_B(7) = '1' and as2_result(7) = '1')) else
                      "0000";
                      
          
