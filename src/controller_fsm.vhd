@@ -67,7 +67,7 @@ begin
                    
                    
        
-       register_proc : process (i_adv)
+       register_proc : process (i_adv, i_reset)
 begin
      if (i_adv = '1' and i_reset = '0')then
         f_Q <= f_Q_next;   
