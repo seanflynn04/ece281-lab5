@@ -128,7 +128,7 @@ begin
 	-- PORT MAPS ----------------------------------------
 	
 	clkdiv_inst : clock_divider 		--instantiation of clock_divider to take 
-        generic map ( k_DIV => 500000 ) -- 1 Hz clock from 100 MHz
+        generic map ( k_DIV => 50000 ) -- 1 Hz clock from 100 MHz
         port map (						  
             i_clk   => clk,
             i_reset => w_btnU,
@@ -143,6 +143,7 @@ begin
            );
            
            led(3 downto 0) <=  w_cycle;
+           
            w_btnU <= BtnU;
            
     ALU_uut : ALU port map (
@@ -201,40 +202,42 @@ begin
            w_seg when "1101",
            w_seg when "1110",
            w_seg when others;
+           
+  led(11 downto 0) <= (others => '0');
     
     
 	-- CONCURRENT STATEMENTS ----------------------------
 	
-  -- register1proc : process(w_cycle(1))
-    --begin 
-   --     if rising_edge(w_cycle(1)) and BtnC = '1' and w_cycle = "0010" then
-   --         w_A <= sw(7 downto 0);
-   --     end if;
-  -- end process register1proc;
+  register1proc : process(w_cycle(1))
+    begin 
+        if rising_edge(w_cycle(1)) then
+           w_A <= sw(7 downto 0);
+        end if;
+  end process register1proc;
    
- -- register2proc : process(w_cycle(2))
-  --  begin 
-  --      if rising_edge(w_cycle(2)) and BtnC = '1' and w_cycle = "0100" then
-   --         w_B <= sw(7 downto 0);
-  --      end if;      
- -- end process register2proc;      
+ register2proc : process(w_cycle(2))
+    begin 
+       if rising_edge(w_cycle(2)) then
+           w_B <= sw(7 downto 0);
+       end if;      
+ end process register2proc;      
     
-    register1proc : process(btnC)
-        begin 
-            if rising_edge(btnC)  then
-                if w_cycle = "0001" then
-                    w_A <= sw(7 downto 0);
-                end if;
-            end if;
-       end process register1proc;
+   -- register1proc : process(btnC)
+   --     begin 
+    --        if rising_edge(btnC)  then
+    --            if w_cycle = "0010" then
+    --                w_A <= sw(7 downto 0);
+    --            end if;
+    --        end if;
+    --   end process register1proc;
    
-    register2proc : process(btnC)
-      begin 
-          if rising_edge(btnC) then
-            if w_cycle = "0010" then
-                w_B <= sw(7 downto 0);
-            end if; 
-          end if;     
-     end process register2proc;     
+  --  register2proc : process(btnC)
+  --    begin 
+    --      if rising_edge(btnC) then
+   --         if w_cycle = "0100" then
+   --             w_B <= sw(7 downto 0);
+    --        end if; 
+    --      end if;     
+    -- end process register2proc;     
        
 end top_basys3_arch;
