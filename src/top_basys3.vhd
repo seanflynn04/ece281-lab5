@@ -81,7 +81,7 @@ architecture top_basys3_arch of top_basys3 is
 	         );
      end component clock_divider;
      
-     
+    signal w_clk : std_logic;
      
     component TDM4 is
 	   generic ( constant k_WIDTH : natural  := 4); -- bits in input and output
@@ -97,6 +97,13 @@ architecture top_basys3_arch of top_basys3 is
 	       );
     end component TDM4;
     
+    signal w_sign : std_logic;
+    signal w_hunds : std_logic_vector (3 downto 0);
+    signal w_tens : std_logic_vector (3 downto 0);
+    signal w_ones : std_logic_vector (3 downto 0);
+    signal w_hex : std_logic_vector (3 downto 0);
+    signal w_sel : std_logic_vector (3 downto 0);
+    
     component twos_comp is
         port(
             i_bin: in std_logic_vector(7 downto 0);
@@ -111,9 +118,24 @@ architecture top_basys3_arch of top_basys3 is
     Port ( i_Hex : in STD_LOGIC_VECTOR (3 downto 0);
            o_seg_n : out STD_LOGIC_VECTOR (6 downto 0));
     end component sevenseg_decoder;
+    
+    signal w_seg : std_logic_vector (6 downto 0);
+    signal w_mux : std_logic_vector (7 downto 0);
+    
+    signal w_pos_or_neg : std_logic_vector (6 downto 0);
       
 begin
 	-- PORT MAPS ----------------------------------------
+	
+	clkdiv_inst : clock_divider 		--instantiation of clock_divider to take 
+        generic map ( k_DIV => 500000 ) -- 1 Hz clock from 100 MHz
+        port map (						  
+            i_clk   => clk,
+            i_reset => w_btnU,
+            o_clk   => w_clk
+        );    
+        
+        
     controller_fsm_uut : controller_fsm port map (
            i_reset => w_btnU,
            i_adv => btnC,
@@ -130,9 +152,89 @@ begin
            o_result => w_result,
            o_flags => led(15 downto 12)
            );
+           
+   twos_comp_uut : twos_comp port map (
+            i_bin => w_mux,
+            o_sign => w_sign,
+            o_hund => w_hunds,
+            o_tens => w_tens,
+            o_ones => w_ones
+            );
+            
+            
+     with w_cycle select
+        w_mux <= "00000000" when "0001",
+                  w_A when "0010",
+                  w_B when "0100",
+                  w_result when "1000",
+                  "00000000" when others;
+                  
+     with w_cycle select
+        an <= "1111" when "0001",
+              w_sel when others;
+                 
+           
+    TDM4_uut : TDM4 port map (
+           i_clk => w_clk,		
+           i_reset => w_btnU,	
+           i_D3 => "0000",		
+		   i_D2 => w_hunds,		
+		   i_D1 => w_tens,		
+		   i_D0 => w_ones,		
+		   o_data => w_hex,		
+		   o_sel => w_sel		
+	       );
+	       
+    sevenseg_decoder_uut : sevenseg_decoder port map (
+           i_Hex => w_hex,
+           o_seg_n => w_seg
+           );
+   
+   with w_sign select
+    w_pos_or_neg <= "1111111" when '0',
+                    "0111111" when '1',
+                    "1111111" when others;
+                    
+  with w_sel select
+    seg <= w_pos_or_neg when "0111",
+           w_seg when "1011",
+           w_seg when "1101",
+           w_seg when "1110",
+           w_seg when others;
     
     
-
 	-- CONCURRENT STATEMENTS ----------------------------
-
+	
+  -- register1proc : process(w_cycle(1))
+    --begin 
+   --     if rising_edge(w_cycle(1)) and BtnC = '1' and w_cycle = "0010" then
+   --         w_A <= sw(7 downto 0);
+   --     end if;
+  -- end process register1proc;
+   
+ -- register2proc : process(w_cycle(2))
+  --  begin 
+  --      if rising_edge(w_cycle(2)) and BtnC = '1' and w_cycle = "0100" then
+   --         w_B <= sw(7 downto 0);
+  --      end if;      
+ -- end process register2proc;      
+    
+    register1proc : process(btnC)
+        begin 
+            if rising_edge(btnC)  then
+                if w_cycle = "0001" then
+                    w_A <= sw(7 downto 0);
+                end if;
+            end if;
+       end process register1proc;
+   
+    register2proc : process(btnC)
+      begin 
+          if rising_edge(btnC) then
+            if w_cycle = "0010" then
+                w_B <= sw(7 downto 0);
+            end if; 
+          end if;     
+     end process register2proc;     
+       
 end top_basys3_arch;
